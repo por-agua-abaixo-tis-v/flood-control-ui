@@ -1,9 +1,10 @@
 import React from "react";
+import Template from "./hoc/Template";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Flood-Control-Ui</header>
+      <Template>Flood-Control-Ui</Template>
     </div>
   );
 }
