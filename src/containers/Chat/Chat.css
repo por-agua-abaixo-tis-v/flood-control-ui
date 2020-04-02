@@ -1,0 +1,29 @@
+.chat{
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+.inactive{
+    visibility: hidden;
+}
+.active{
+    width: -webkit-fill-available;
+}
+.messages{
+    flex-grow: 3;
+    display: flex;
+    width: -webkit-fill-available;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+.actual{
+    width: 100%;
+}
