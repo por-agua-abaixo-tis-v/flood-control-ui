@@ -1,0 +1,10 @@
+.chat{
+    display: flex;
+}
+.flexGrow{
+    flex-grow: 1;
+    height: 75vh;
+}
+.group{
+    cursor: pointer;
+}
