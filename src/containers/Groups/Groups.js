@@ -4,6 +4,7 @@ import axios from '../../axios-orders'
 import { Group } from '../../components/Group/Group';
 import Chat from '../../containers/Chat/Chat';
 import classes from './Groups.css'
+import {getMapLocation} from '../../plugins/Geolocation'
 export default class Groups extends Component {
     state = {
         groups:[],
@@ -11,13 +12,22 @@ export default class Groups extends Component {
         selectedGroup:null
     }
     componentDidMount () {
-    axios.get( 'https://tisv-flood-control-api.herokuapp.com/groups' )
-        .then( response => {
-            this.setState( { groups: response.data } );
-        } )
-        .catch( error => {
-            this.setState( { error: true } );
-        } );
+        setInterval(() => {
+            let position = getMapLocation()
+            axios.post( 'https://tisv-flood-control-api.herokuapp.com/users/'+localStorage.getItem('id')+'/geolocation',{'latitude':position.latitude,'longitude':position.latitude})
+            .then( response => {
+                axios.get( 'https://tisv-flood-control-api.herokuapp.com/users/'+localStorage.getItem('id')+'/groups' )
+                .then( response => {
+                    this.setState( { groups: response.data } );
+                } )
+                .catch( error => {
+                    this.setState( { error: true } );
+                } );
+            } )
+            .catch( error => {
+                this.setState( { error: true } );
+            } );
+        }, 5000);
     }
     groupSelectEvent = (group) => {
         this.setState( { selectedGroup: group } );

@@ -4,9 +4,9 @@ import React from 'react';
 import classes from './Logo.css';
 
 const logo = (props) => (
-    <div className={classes.Logo} style={{height: props.height}}>
+    <a href="/" className={classes.Logo} style={{height: props.height}}>
         Flood Control
-    </div>
+    </a>
 );
 
 export default logo;

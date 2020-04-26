@@ -58,7 +58,7 @@ class Chat extends Component {
         let listOfMessage = []
         if(this.messages.length > 0){
             listOfMessage = this.messages.map( message => {
-                return <Message user={this.isCorrectUser(message.user)} actual={document.URL.split('user=')[1].toLowerCase()} messagem={message} />;
+                return <Message user={this.isCorrectUser(message.user)} actual={localStorage.getItem('userName').toLowerCase()} messagem={message} />;
             } )
             .reduce((arr, el) => {
                 return arr.concat(el)
@@ -82,7 +82,7 @@ class Chat extends Component {
                     {this.state.messages}
                 </div>
                 <div className={this.props.activeGroup !== null? classes.active : classes.inactive}>
-                <InputMessage groupId={this.groupId} user={document.URL.split('user=')[1]}></InputMessage>
+                <InputMessage groupId={this.groupId} user={localStorage.getItem('userName')}></InputMessage>
                 </div>
             </div>
         )

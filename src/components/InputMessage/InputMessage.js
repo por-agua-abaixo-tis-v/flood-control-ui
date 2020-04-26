@@ -4,7 +4,7 @@ import axios from '../../axios-orders'
 
 const InputMessage = (props) => {
     const sendMethod = (value) => {
-        axios.post( 'https://tisv-flood-control-api.herokuapp.com/messages?group_id=' + props.groupId+'&user_id='+props.user,{"text":document.getElementById('input-message').value})
+        axios.post( 'https://tisv-flood-control-api.herokuapp.com/messages?group_id=' + props.groupId+'&user_id='+localStorage.getItem('id'),{"text":document.getElementById('input-message').value})
         .then( response => {
             this.messages = response.data;
         } )
