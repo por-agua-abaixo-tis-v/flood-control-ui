@@ -1,0 +1,68 @@
+.box{
+
+}
+.boxBody{
+	margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+	border: 1px solid #ccc;
+    position: relative;
+    justify-content: center;
+    background: #FFFFFF;
+    -webkit-box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    margin: 1rem 0em;
+    padding: 1em 1em;
+    border-radius: 0.28571429rem;
+    border: 1px solid rgba(34, 36, 38, 0.15)
+}
+.boxFooter{
+
+}
+.login{
+    justify-content: center;
+    width:400px;
+    display: flex;
+    flex-direction: column;
+}
+.input{
+    position: relative;
+    font-weight: normal;
+    font-style: normal;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    color: rgba(0, 0, 0, 0.87);
+    flex-grow: 1;
+}
+.inputPassword{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+.buttonLogin{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px 2px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.buttonRegister{
+    background-color: #8c8c8c;
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px 2px;
+    border-radius: 3px;
+    cursor: pointer;
+}
