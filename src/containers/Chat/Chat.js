@@ -50,7 +50,6 @@ class Chat extends Component {
         let correctUser =  this.state.usersColors.filter((element) =>{
             return element.user === value
         })
-        console.log(correctUser);
         return correctUser
     }
     createMessages = () =>{
