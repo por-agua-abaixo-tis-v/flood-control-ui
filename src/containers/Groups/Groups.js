@@ -12,6 +12,20 @@ export default class Groups extends Component {
         selectedGroup:null
     }
     componentDidMount () {
+        let position = getMapLocation()
+        axios.post( 'https://tisv-flood-control-api.herokuapp.com/users/'+localStorage.getItem('id')+'/geolocation',{'latitude':position.latitude,'longitude':position.latitude})
+        .then( response => {
+            axios.get( 'https://tisv-flood-control-api.herokuapp.com/users/'+localStorage.getItem('id')+'/groups' )
+            .then( response => {
+                this.setState( { groups: response.data } );
+            } )
+            .catch( error => {
+                this.setState( { error: true } );
+            } );
+        } )
+        .catch( error => {
+            this.setState( { error: true } );
+        } );
         setInterval(() => {
             let position = getMapLocation()
             axios.post( 'https://tisv-flood-control-api.herokuapp.com/users/'+localStorage.getItem('id')+'/geolocation',{'latitude':position.latitude,'longitude':position.latitude})
