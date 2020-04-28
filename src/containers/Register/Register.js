@@ -53,7 +53,7 @@ export default function Register(props) {
       })
     }
     const password = passwordField
-    if (password.length <= 6) {
+    if (password.length < 6) {
       isValid = false
       props.notification({
         title: "Sua senha deve possuir 6 digitos ou mais!",
