@@ -27,25 +27,61 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
-export default function Register() {
+const validateEmail = (email) => {
+  var re = /\S+@\S+\.\S+/
+  return re.test(email)
+}
+export default function Register(props) {
+  const isFormValid = (emailField, nameField, passwordField) => {
+    let isValid = true
+    const email = emailField
+    if (!validateEmail(email)) {
+      isValid = false
+      props.notification({
+        title: "Email Invalido!",
+        msg: "Verifique se o seu e-mail é valido.",
+        type: "error",
+      })
+    }
+    const name = nameField
+    if (name === '' || name === undefined) {
+      isValid = false
+      props.notification({
+        title: "Nome Vazio!",
+        msg: "Verifique se o campo nome está preenchido.",
+        type: "error",
+      })
+    }
+    const password = passwordField
+    if (password.length <= 6) {
+      isValid = false
+      props.notification({
+        title: "Sua senha deve possuir 6 digitos ou mais!",
+        msg: "Verifique se a sua senha possui mais de 6 digitos.",
+        type: "error",
+      })
+    }
+    return isValid
+  }
   const classes = useStyles();
-  const sendRegister = () =>{
+  const sendRegister = () => {
     let email = document.getElementById('email').value
     let name = document.getElementById('name').value
     let password = document.getElementById('password').value
-    axios.post( 'https://tisv-flood-control-api.herokuapp.com/users' ,{
-      "email":email,
-      "name":name,
-      "pswd":password,
-    })
-    .then( response => {
-      localStorage.setItem('id', response.data.id);
-      localStorage.setItem('userName', response.data.name);
-      window.location.replace(document.location.origin + '/groups');
-    } )
-    .catch( error => {
-    });
+    if (isFormValid(email, name, password)) {
+      axios.post('https://tisv-flood-control-api.herokuapp.com/users', {
+        "email": email,
+        "name": name,
+        "pswd": password,
+      })
+        .then(response => {
+          localStorage.setItem('id', response.data.id);
+          localStorage.setItem('userName', response.data.name);
+          window.location.replace(document.location.origin + '/groups');
+        })
+        .catch(error => {
+        });
+    }
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -93,7 +129,7 @@ export default function Register() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={()=>{sendRegister()}}
+            onClick={() => { sendRegister() }}
           >
             Cadastre-se
           </Button>

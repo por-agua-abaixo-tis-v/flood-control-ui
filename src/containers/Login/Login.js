@@ -8,8 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
-import { store } from 'react-notifications-component';
-import {NotificationContainer,NotificationManager} from 'react-notifications';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,23 +29,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Login(props) {
   const classes = useStyles();
-  const authUser = () =>{
+  const authUser = () => {
     let email = document.getElementById('email').value
     let password = document.getElementById('password').value
-    axios.post( 'https://tisv-flood-control-api.herokuapp.com/users/auth' ,{
-      "email":email,
-      "pswd":password,
+    axios.post('https://tisv-flood-control-api.herokuapp.com/users/auth', {
+      "email": email,
+      "pswd": password,
     })
-    .then( response => {
-        localStorage.setItem('id',response.data.user.id)
-        localStorage.setItem('userName',response.data.user.name)
+      .then(response => {
+        localStorage.setItem('id', response.data.user.id)
+        localStorage.setItem('userName', response.data.user.name)
         window.location.href = document.location.origin + '/groups'
-    } )
-    .catch( error => {
-      NotificationManager.error('Error message', 'Click me!', 5000);
-    });
+      })
+      .catch(error => {
+        props.notification({
+          title: "Usuário ou senha inválidos!",
+          msg: "Caso não possua uma conta clique aqui!",
+          type: "error",
+          action: {
+            label: "Registrar-se",
+            callback: function () {
+              window.location.href = document.location.origin + '/register'
+            }
+          }
+        })
+      });
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -84,7 +92,7 @@ export default function Login() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={()=>{authUser()}}
+            onClick={() => { authUser() }}
           >
             Entrar
           </Button>
@@ -97,7 +105,6 @@ export default function Login() {
           </Grid>
         </form>
       </div>
-      <NotificationContainer/>
     </Container>
   );
 }
