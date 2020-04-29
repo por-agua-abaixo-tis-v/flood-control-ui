@@ -14,6 +14,7 @@
     visibility: hidden;
 }
 .active{
+    display: flex;
     width: -webkit-fill-available;
     width: -moz-available;
 }
@@ -28,4 +29,24 @@
 }
 .actual{
     width: 100%;
+}
+@media (max-width: 500px) {
+    .backButton{
+        background-color: #737373;
+        border-radius: 10px;
+        display: flex;
+        padding: 5px 10px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    
+        background-color: #737373;
+        border: none;
+        cursor: pointer;
+    }
+}
+.backButton{
+    display: none;
 }

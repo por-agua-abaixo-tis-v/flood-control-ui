@@ -12,6 +12,38 @@
     width: 100%;
     text-align: left;
 }
+@media (max-width: 500px) {
+    .group{
+        border: 2px solid #dedede;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 95vw;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+}
+@media (max-width: 800px) {
+    .group{
+        border: 2px solid #dedede;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 97vw;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+}
 .fs{
     flex-shrink: 0;
     display: flex;
@@ -22,6 +54,8 @@
     padding: 10px 20px;
     display: flex;
     width: -webkit-fill-available;
+    width: -moz-available;
+    margin-bottom: 10px;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -35,6 +69,10 @@
 .nameOfGroup{
     margin: 5px 30px;
 }
-.lastMessage{
-
+.inactive{
+    display: none;
+}
+.active{
+    width: -webkit-fill-available;
+    width: -moz-available;
 }

@@ -9,6 +9,8 @@
 }
 .inputForm{
     display: flex;
+    width: -webkit-fill-available;
+    width: -moz-available;
 }
 .send{
     background-color: #4CAF50;

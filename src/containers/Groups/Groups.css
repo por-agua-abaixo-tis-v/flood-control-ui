@@ -5,6 +5,23 @@
     flex-grow: 1;
     height: 75vh;
 }
+@media (max-width: 500px) {
+    .chat{
+        display: flex;
+        flex-direction: column;
+    }
+    .flexGrow{
+        flex-grow: 1;
+        height: 75vh;
+    }
+    .inactive{
+        display: none;
+    }
+    .active{
+        width: -webkit-fill-available;
+        width: -moz-available;
+    }
+}
 .group{
     cursor: pointer;
 }
