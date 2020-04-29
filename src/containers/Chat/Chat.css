@@ -47,6 +47,8 @@
         cursor: pointer;
     }
 }
-.backButton{
-    display: none;
+@media (min-width: 500px) {
+    .backButton{
+        display: none;
+    }
 }
