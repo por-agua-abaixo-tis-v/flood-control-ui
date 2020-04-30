@@ -5,7 +5,7 @@ import Navbar from './hoc/Layout/Layout'
 import Register from './containers/Register/Register'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import NotificationSystem from 'react-notification-system';
-
+import CreateGroups from './containers/CreateGroup/CreateGroup'
 function App() {
   let notificationSystem = React.createRef();
   const addNotification = (config) => {
@@ -22,7 +22,7 @@ function App() {
       <div>
         <Navbar></Navbar>
         <Switch>
-          <Route path="/groups">
+          <Route exact path="/groups">
             <div>
               <Groups notification={addNotification} ></Groups>
             </div>
@@ -34,6 +34,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register notification={addNotification} ></Register>
+          </Route>
+          <Route path="/groups/create">
+            <CreateGroups notification={addNotification} ></CreateGroups>
           </Route>
           <Route path="/">
             {/* <InitialPage></InitialPage> */}
