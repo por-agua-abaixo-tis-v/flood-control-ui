@@ -13,6 +13,9 @@ export default class Groups extends Component {
     }
     componentDidMount() {
         let position = getMapLocation()
+        if (localStorage.getItem('id') == null) {
+            window.location.href = window.location.origin + "/login"
+        }
         axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.latitude })
             .then(response => {
                 axios.get('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/groups')
