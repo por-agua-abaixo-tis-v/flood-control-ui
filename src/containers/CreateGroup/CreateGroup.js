@@ -36,7 +36,7 @@ export default class CreateGroups extends Component {
         window.location.href = window.location.origin + "/login"
     }
     setTimeout(() => {
-      let myLatlng = new window.google.maps.LatLng(position.latitude,position.longitude);
+    let myLatlng = new window.google.maps.LatLng(position.latitude, position.longitude);
     let mapOptions = {
       zoom: 15,
       center: myLatlng
@@ -48,7 +48,7 @@ export default class CreateGroups extends Component {
       draggable:true,
       title:"Drag me!"
     });
-    }, 500);
+    }, 1000);
   }
   render(){
     return(
