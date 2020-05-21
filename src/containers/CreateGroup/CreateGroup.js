@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,33 +8,15 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
+import { render } from '@testing-library/react';
+import classes from './CreateGroup.css'
+import { getMapLocation } from '../../plugins/Geolocation'
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-export default function CreateGroups(props) {
-  const classes = useStyles();
-  const authUser = () => {
+export default class CreateGroups extends Component {
+  authUser = () => {
     let name = document.getElementById('name').value
-    let latitude = document.getElementById('latitude').value
-    let longitude = document.getElementById('longitude').value
+    let latitude = this.marker.position.lat()
+    let longitude = this.marker.position.lng()
     let range = document.getElementById('range').value
     axios.post('https://tisv-flood-control-api.herokuapp.com/groups', {
       "name": name,
@@ -48,7 +30,26 @@ export default function CreateGroups(props) {
       .catch(error => {
       });
   }
-  return (
+  componentDidMount(){
+    let position = getMapLocation()
+    setTimeout(() => {
+      let myLatlng = new window.google.maps.LatLng(position.latitude,position.longitude);
+    let mapOptions = {
+      zoom: 15,
+      center: myLatlng
+    }
+    let map = new window.google.maps.Map(document.getElementById("map"), mapOptions);
+    this.marker = new window.google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      draggable:true,
+      title:"Drag me!"
+    });
+    console.log(this.marker)
+    }, 500);
+  }
+  render(){
+    return(
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -66,24 +67,7 @@ export default function CreateGroups(props) {
             name="name"
             autoFocus
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="latitude"
-            label="latitude"
-            id="latitude"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="longitude"
-            label="longitude"
-            id="longitude"
-          />
+          <div className={classes.map} id='map'/>
           <TextField
             variant="outlined"
             margin="normal"
@@ -99,12 +83,12 @@ export default function CreateGroups(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => { authUser() }}
+            onClick={() => { this.authUser() }}
           >
             Criar Grupo
           </Button>
         </form>
       </div>
     </Container>
-  );
+  )}
 }

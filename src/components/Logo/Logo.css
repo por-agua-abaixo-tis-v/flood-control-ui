@@ -1,18 +1,23 @@
 .Logo {
     height: 100%;
     margin: 0px 20px;
+    padding: 5px;
     box-sizing: border-box;
-    border-radius: 5px;
-    background-color: #4CAF50; /* Green */
     border: none;
-    color: white;
-    padding: 11px 32px 10px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     font-size: 16px;
 }
-
+.LogoText{
+    color: white;
+    font-family: "Nunito Sans";
+    padding: 0px 20px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 24px;
+}
 .Logo img {
     height: 100%;
 }

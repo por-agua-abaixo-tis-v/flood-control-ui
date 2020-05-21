@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import Template from '../../hoc/Template/Template'
 import axios from '../../axios-orders'
 import { Group } from '../../components/Group/Group';
-import Chat from '../../containers/Chat/Chat';
+import Chat from '../Chat/Chat';
 import './Groups.scss'
-import { getMapLocation } from '../../plugins/Geolocation'
 export default class Groups extends Component {
     state = {
         groups: [],
@@ -12,34 +11,20 @@ export default class Groups extends Component {
         selectedGroup: null
     }
     componentDidMount() {
-        let position = getMapLocation()
         if (localStorage.getItem('id') == null) {
             window.location.href = window.location.origin + "/login"
         }
-        axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.longitude })
-            .then(response => {
-                axios.get('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/groups')
-                    .then(response => {
-                        this.setState({ groups: response.data });
-                    })
-                    .catch(error => {
-                        this.setState({ error: true });
-                    });
-            })
-            .catch(error => {
-                this.setState({ error: true });
-            });
+        axios.get('https://tisv-flood-control-api.herokuapp.com/groups')
+        .then(response => {
+            this.setState({ groups: response.data });
+        })
+        .catch(error => {
+            this.setState({ error: true });
+        });
         setInterval(() => {
-            let position = getMapLocation()
-            axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.latitude })
+            axios.get('https://tisv-flood-control-api.herokuapp.com/groups')
                 .then(response => {
-                    axios.get('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/groups')
-                        .then(response => {
-                            this.setState({ groups: response.data });
-                        })
-                        .catch(error => {
-                            this.setState({ error: true });
-                        });
+                    this.setState({ groups: response.data });
                 })
                 .catch(error => {
                     this.setState({ error: true });
@@ -72,7 +57,7 @@ export default class Groups extends Component {
             <Template>
                 <div className='chat'>
                     <div className={this.state.selectedGroup !== null ? 'inactive groups-box' : 'active groups-box'}>
-                        <div className='groups-alert'>ALERTAS</div>
+                        <div className='groups-alert'><div>ALERTAS</div><button className='groups-new'>Novo Alerta</button></div>
                         {this.groups()}
                     </div>
                     <div className={this.state.selectedGroup !== null ? 'flexGrow' : 'inactive chat-box'}>

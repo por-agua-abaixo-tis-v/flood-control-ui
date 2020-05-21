@@ -1,10 +1,9 @@
 .Toolbar {
-    height: 56px;
+    height: 70px;
     width: 100%;
-    position: fixed;
     top: 0;
     left: 0;
-    background-color: #00ccff;
+    background-color: #62C2EB;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,11 +13,13 @@
 }
 
 .Toolbar nav {
-    height: 100%;
+    height: 80%;
 }
 
 .Logo {
-    height: 80%;
+    background-color: #C2E6F7;
+    height: 100%;
+    width: 450px;
 }
 
 @media (max-width: 499px) {

@@ -1,5 +1,6 @@
-.box{
-
+.map{
+    height: 400px;
+    width: 100%;
 }
 .boxBody{
 	margin: 0 auto;
@@ -65,4 +66,11 @@
     margin: 8px 2px;
     border-radius: 3px;
     cursor: pointer;
+}
+.paper{
+    height: 75vh;
+    display: flex;
+    margin-top: 64px;
+    align-items: center;
+    flex-direction: column;
 }

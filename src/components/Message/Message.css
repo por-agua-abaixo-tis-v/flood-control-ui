@@ -1,7 +1,6 @@
 .message{
-    font-size: small;
-    border: 2px solid #d9d9d9;
-    background-color: #d9d9d9;
+    border: 2px solid #C2E6F7;
+    background-color: #C2E6F7;
     border-radius: 5px;
     padding: 5px 20px;
     margin: 3px 10px;
@@ -9,12 +8,15 @@
     align-content: flex-start;
     display: flex;
     flex-direction: column;
-    max-width: 350px;
+    max-width: 450px;
     cursor: pointer;
     width: 100%;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
 }
 .messageUser{
-    font-size: small;
     border: 2px solid #d9d9d9;
     background-color: #d9d9d9;
     border-radius: 5px;
@@ -23,41 +25,87 @@
     align-self:flex-end;
     display: flex;
     flex-direction: column;
-    max-width: 350px;
+    max-width: 450px;
     cursor: pointer;
     width: 100%;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;}
+@media (max-width: 1200px) {
+.message{
+    border: 2px solid #C2E6F7;
+    background-color: #C2E6F7;
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: 3px 10px;
+    align-items: flex-start;
+    align-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+.messageUser{
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    border: 2px solid #d9d9d9;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: 3px 10px;
+    align-self:flex-end;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    cursor: pointer;
+    width: 100%;
+}
 }
 @media (max-width: 500px) {
-.message{
-    font-size: small;
-    border: 2px solid #d9d9d9;
-    background-color: #d9d9d9;
-    border-radius: 5px;
-    padding: 5px 20px;
-    margin: 3px 10px;
-    align-items: flex-start;
-    align-content: flex-start;
-    display: flex;
-    flex-direction: column;
-    max-width: 200px;
-    cursor: pointer;
-    width: 100%;
-}
-.messageUser{
-    font-size: small;
-    border: 2px solid #d9d9d9;
-    background-color: #d9d9d9;
-    border-radius: 5px;
-    padding: 5px 20px;
-    margin: 3px 10px;
-    align-self:flex-end;
-    display: flex;
-    flex-direction: column;
-    max-width: 200px;
-    cursor: pointer;
-    width: 100%;
-}
-}
+    .message{
+        border: 2px solid #C2E6F7;
+        background-color: #C2E6F7;
+        border-radius: 5px;
+        padding: 5px 20px;
+        margin: 3px 10px;
+        align-items: flex-start;
+        align-content: flex-start;
+        display: flex;
+        flex-direction: column;
+        max-width: 200px;
+        cursor: pointer;
+        width: 100%;
+        font-family: "Nunito Sans";
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+    }
+    .messageUser{
+        font-family: "Nunito Sans";
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        border: 2px solid #d9d9d9;
+        background-color: #d9d9d9;
+        border-radius: 5px;
+        padding: 5px 20px;
+        margin: 3px 10px;
+        align-self:flex-end;
+        display: flex;
+        flex-direction: column;
+        max-width: 200px;
+        cursor: pointer;
+        width: 100%;
+    }
+    }
 .p{
     margin: 3px;
     word-break: break-all;

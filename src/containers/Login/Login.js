@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
+    height:'75vh',
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -58,7 +59,7 @@ export default function Login(props) {
       });
   }
   return (
-    <Container component="main" maxWidth="xs">
+    <Container className={classes.backgroundColor} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -90,8 +91,8 @@ export default function Login(props) {
           <Button
             fullWidth
             variant="contained"
-            color="primary"
             className={classes.submit}
+            color='primary'
             onClick={() => { authUser() }}
           >
             Entrar

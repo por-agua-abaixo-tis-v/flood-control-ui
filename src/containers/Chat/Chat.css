@@ -1,9 +1,6 @@
 .chat{
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 10px 10px;
+    border-left: 1px solid #dedede;
+    background-color: white;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -30,24 +27,21 @@
 .actual{
     width: 100%;
 }
-@media (max-width: 500px) {
+@media (max-width: 900px) {
     .backButton{
-        background-color: #737373;
-        border-radius: 10px;
+        background-color: #f1f1f1;
         display: flex;
-        padding: 5px 10px;
-        margin-right: 5px;
+        padding: 5px 19px;
         margin-bottom: 10px;
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
-    
-        background-color: #737373;
         border: none;
         cursor: pointer;
+        border: 1px solid #dedede;
     }
 }
-@media (min-width: 500px) {
+@media (min-width: 900px) {
     .backButton{
         display: none;
     }

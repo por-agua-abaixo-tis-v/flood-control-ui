@@ -1,11 +1,13 @@
 import React from "react";
 import Groups from "./containers/Groups/Groups";
+import AdminGroups from "./containers/GroupsAdmin/Groups";
 import Login from './containers/Login/Login'
 import Navbar from './hoc/Layout/Layout'
 import Register from './containers/Register/Register'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
 import NotificationSystem from 'react-notification-system';
 import CreateGroups from './containers/CreateGroup/CreateGroup'
+import classes from './App.css'
 function App() {
   let notificationSystem = React.createRef();
   const addNotification = (config) => {
@@ -19,18 +21,18 @@ function App() {
   };
   return (
     <Router>
-      <div>
+      <div className={classes.chatcontainer}>
         <Navbar></Navbar>
-        <Switch>
+        <div>
+          <Switch >
           <Route exact path="/groups">
-            <div>
               <Groups notification={addNotification} ></Groups>
-            </div>
+          </Route>
+          <Route exact path="/groups/admin">
+              <AdminGroups notification={addNotification} ></AdminGroups>
           </Route>
           <Route path="/login">
-            <div>
               <Login notification={addNotification} ></Login>
-            </div>
           </Route>
           <Route path="/register">
             <Register notification={addNotification} ></Register>
@@ -39,11 +41,12 @@ function App() {
             <CreateGroups notification={addNotification} ></CreateGroups>
           </Route>
           <Route path="/">
-            {/* <InitialPage></InitialPage> */}
+            {localStorage.getItem('id')? <Redirect to="/groups" />:<Redirect to="/login" />}
           </Route>
         </Switch>
-      </div>
+        </div>
       <NotificationSystem ref={notificationSystem} />
+      </div>
     </Router>
     // <div>
     //

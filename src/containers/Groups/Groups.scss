@@ -1,0 +1,51 @@
+.chat{
+    display: flex;
+    height: 80vh;
+}
+.flexGrow{
+    flex-grow: 1;
+}
+.group{
+    cursor: pointer;
+}
+.groups-box{
+    background-color:#f1f1f1;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+}
+.chat-box{
+    flex-grow: 1;
+    height: 80vh;
+}
+@media (max-width: 900px) {
+    .chat{
+        display: flex;
+        flex-direction: column;
+        height:80vh;
+    }
+    .flexGrow{
+        flex-grow: 1;
+        height: 75vh;
+    }
+    .inactive{
+        display: none;
+    }
+    .active{
+        width: -webkit-fill-available;
+        width: -moz-available;
+    }
+    .groups-box{
+        background-color:#f1f1f1;
+        width: 100vw;
+    }
+}
+.groups-alert{
+    padding: 19px 20px 0px 20px;
+    height: 50px;
+    color: #8FD4EF;
+    font-family: "Nunito Sans";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
