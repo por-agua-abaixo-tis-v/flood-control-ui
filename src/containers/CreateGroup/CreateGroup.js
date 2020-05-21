@@ -48,7 +48,7 @@ export default class CreateGroups extends Component {
       draggable:true,
       title:"Drag me!"
     });
-    }, 1000);
+    }, 500);
   }
   render(){
     return(
