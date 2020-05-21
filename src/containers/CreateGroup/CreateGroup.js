@@ -32,6 +32,9 @@ export default class CreateGroups extends Component {
   }
   componentDidMount(){
     let position = getMapLocation()
+    if (localStorage.getItem('id') == null) {
+        window.location.href = window.location.origin + "/login"
+    }
     setTimeout(() => {
       let myLatlng = new window.google.maps.LatLng(position.latitude,position.longitude);
     let mapOptions = {
