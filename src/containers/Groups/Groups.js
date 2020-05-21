@@ -5,6 +5,7 @@ import { Group } from '../../components/Group/Group';
 import Chat from '../../containers/Chat/Chat';
 import './Groups.scss'
 import { getMapLocation } from '../../plugins/Geolocation'
+import canecaFeliz from '../../static/caneca.svg'
 export default class Groups extends Component {
     state = {
         groups: [],
@@ -60,7 +61,7 @@ export default class Groups extends Component {
                 }, []);
         }
         if (listOfGroups.length === 0) {
-            return (<div></div>)
+            return (<div className='message'><img className='caneca' src={canecaFeliz}></img> <span>Parece que nenhum alerta foi encontrado, que bom!</span></div>)
         }
         return listOfGroups
     }

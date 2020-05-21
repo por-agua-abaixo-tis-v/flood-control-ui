@@ -99,6 +99,9 @@ class Chat extends Component {
                     </button>
                     <GroupTitle group={this.props.activeGroup} title={true} disabled></GroupTitle>
                 </div>
+                <div className={this.props.activeGroup !== null ? classes.inactive : classes.activeMessage}>
+                    <span className={classes.selectGroup}>Selecione um grupo para continuar!!</span>
+                </div>
                 <div className={classes.messages}>
                     {this.state.messages}
                 </div>
