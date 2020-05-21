@@ -68,9 +68,12 @@
     cursor: pointer;
 }
 .paper{
-    height: 75vh;
     display: flex;
     margin-top: 64px;
     align-items: center;
     flex-direction: column;
+}
+.form{
+    margin: 40px;
+    min-width: 450px;
 }

@@ -50,7 +50,7 @@ export default class CreateGroups extends Component {
   }
   render(){
     return(
-    <Container component="main" maxWidth="xs">
+    <div>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -89,6 +89,6 @@ export default class CreateGroups extends Component {
           </Button>
         </form>
       </div>
-    </Container>
+    </div>
   )}
 }
