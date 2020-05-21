@@ -99,7 +99,10 @@ export default class Groups extends Component {
     deselectGroup = () => {
         this.setState({ selectedGroup: null });
     }
-
+    handleOpen = (event) =>{
+        event.preventDefault();
+        window.location.href = document.location.origin + '/groups/create'
+    }
     render() {
         return (
             <Template>

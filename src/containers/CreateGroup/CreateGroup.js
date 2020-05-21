@@ -53,9 +53,7 @@ export default class CreateGroups extends Component {
     <div>
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Criar grupo
-        </Typography>
+          <span className={classes.title}>Criar grupo</span>
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"

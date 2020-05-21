@@ -81,6 +81,12 @@ export default function Register(props) {
           window.location.replace(document.location.origin + '/groups');
         })
         .catch(error => {
+          console.log(error)
+          props.notification({
+            title: "Oops!",
+            msg: "Parece que este e-mail já está sendo usado!.",
+            type: "error",
+          })
         });
     }
   }
