@@ -45,7 +45,6 @@ export default class CreateGroups extends Component {
       draggable:true,
       title:"Drag me!"
     });
-    console.log(this.marker)
     }, 500);
   }
   render(){
