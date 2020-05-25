@@ -2,19 +2,10 @@ import React, { Component } from 'react'
 import Template from '../../hoc/Template/Template'
 import axios from '../../axios-orders'
 import { Group } from '../../components/Group/Group';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Chat from '../Chat/Chat';
 import './GroupsAdmin.scss'
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
 import { getMapLocation } from '../../plugins/Geolocation'
-import classes from '../CreateGroup/CreateGroup.css'
-
+import Members from '../Members/Members'
 export default class Groups extends Component {
     constructor(){
         super()
@@ -61,22 +52,6 @@ export default class Groups extends Component {
                     this.setState({ error: true });
                 });
         }, 30000);
-        let position = getMapLocation()
-        setTimeout(() => {
-          let myLatlng = new window.google.maps.LatLng(position.latitude,position.longitude);
-        let mapOptions = {
-          zoom: 15,
-          center: myLatlng
-        }
-        let map = new window.google.maps.Map(document.getElementById("map"), mapOptions);
-        this.marker = new window.google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          draggable:true,
-          title:"Drag me!"
-        });
-        console.log(this.marker)
-        }, 500);
     }
     groupSelectEvent = (group) => {
         this.setState({ selectedGroup: group });
@@ -85,7 +60,7 @@ export default class Groups extends Component {
         let listOfGroups = []
         if (this.state.groups.length > 0) {
             listOfGroups = this.state.groups.map(group => {
-                return <Group selectGroup={this.groupSelectEvent} group={group} />;
+                return <Group selectGroup={this.groupSelectEvent} admin='true' group={group} />;
             })
                 .reduce((arr, el) => {
                     return arr.concat(el)
@@ -112,7 +87,7 @@ export default class Groups extends Component {
                         {this.groups()}
                     </div>
                     <div className={this.state.selectedGroup !== null ? 'flexGrow' : 'inactive chat-box'}>
-                        <Chat back={this.deselectGroup} activeGroup={this.state.selectedGroup}></Chat>
+                        <Members back={this.deselectGroup} activeGroup={this.state.selectedGroup}></Members>
                     </div>
                 </div>
             </Template>

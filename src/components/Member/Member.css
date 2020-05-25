@@ -1,0 +1,47 @@
+.fs{
+    flex-shrink: 0;
+    display: flex;
+    width: 100%;
+}
+.title{
+    background-color: #f1f1f1;
+    padding: 0px 20px;
+    border: 1px solid #dedede;
+    display: flex;
+    height: 68px;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.img{
+    border: 2px solid #62C2EB;
+    padding: 2px;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+}
+
+.titleUsers{
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #62C2EB;
+    min-width: 200px;
+}
+.member{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+.descriptionUsers{
+    margin: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: black;
+    flex-grow: 2;
+}

@@ -42,6 +42,7 @@ export default function Login(props) {
       .then(response => {
         localStorage.setItem('id', response.data.user.id)
         localStorage.setItem('userName', response.data.user.name)
+        localStorage.setItem('adm', response.data.user.adm)
         window.location.href = document.location.origin + '/groups'
       })
       .catch(error => {
