@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/groups">
               <Groups notification={addNotification} ></Groups>
           </Route>
-          <Route exact path="/groups/admin">
+          <Route exact path="/admin/dashboard">
               <AdminGroups notification={addNotification} ></AdminGroups>
           </Route>
           <Route path="/login">
@@ -37,7 +37,7 @@ function App() {
           <Route path="/register">
             <Register notification={addNotification} ></Register>
           </Route>
-          <Route path="/groups/create">
+          <Route path="/new/group">
             <CreateGroups notification={addNotification} ></CreateGroups>
           </Route>
           <Route path="/">

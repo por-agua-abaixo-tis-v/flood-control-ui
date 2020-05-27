@@ -14,9 +14,12 @@ class navigationItems extends Component {
     hasLoggedNavbar = () => {
         if (localStorage.getItem('id')) {
             const navItems = localStorage.getItem('adm') === "true" ? [
-            <NavigationItem active={this.hasActive('groups/admin')} link="/groups/admin">Admin</NavigationItem>,
+            <NavigationItem active={this.hasActive('new')} link="/new/group">Novo Grupo</NavigationItem>,
+            <NavigationItem active={this.hasActive('admin/dashboard')} link="/admin/dashboard">Admin</NavigationItem>,
             <NavigationItem active={this.hasActive('groups')} link="/groups">Alertas</NavigationItem>
+
         ] : [
+            <NavigationItem active={this.hasActive('new')} link="/new/group">Novo Grupo</NavigationItem>,
             <NavigationItem active={this.hasActive('groups')} link="/groups">Alertas</NavigationItem>
         ]
             return [...navItems,

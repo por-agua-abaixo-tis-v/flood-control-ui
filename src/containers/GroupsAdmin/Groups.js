@@ -74,16 +74,12 @@ export default class Groups extends Component {
     deselectGroup = () => {
         this.setState({ selectedGroup: null });
     }
-    handleOpen = (event) =>{
-        event.preventDefault();
-        window.location.href = document.location.origin + '/groups/create'
-    }
     render() {
         return (
             <Template>
                 <div className='chat'>
                     <div className={this.state.selectedGroup !== null ? 'inactive groups-box' : 'active groups-box'}>
-                        <div className='groups-alert'><div>ALERTAS</div><button className='groups-new' onClick={this.handleOpen}>Novo Alerta</button></div>
+                        <div className='groups-alert'><div>ALERTAS</div></div>
                         {this.groups()}
                     </div>
                     <div className={this.state.selectedGroup !== null ? 'flexGrow' : 'inactive chat-box'}>

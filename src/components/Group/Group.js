@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React from 'react'
 import Template from '../../hoc/Template/Template'
 import classes from './Group.css'
@@ -53,37 +54,58 @@ export const Group = (props) => {
         setOpen(true);
     };
     const editGroup = () => {
-        let id = props.group.id
-        let name = document.getElementById('name').value
-        let range = document.getElementById('range').value
-        axios.put('https://tisv-flood-control-api.herokuapp.com/groups/'+ id, {
-            "name": name,
-            "range": range
-        })
-          .then(response => {
-            window.location.href = document.location.origin + '/groups/admin'
-          })
-          .catch(error => {
-          });
+        let r = confirm("Deseja mesmo editar este grupo?");
+        if(r==true){
+            let id = props.group.id
+            let name = document.getElementById('name').value
+            let range = document.getElementById('range').value
+            axios.put('https://tisv-flood-control-api.herokuapp.com/groups/'+ id, {
+                "name": name,
+                "range": range
+            })
+              .then(response => {
+                window.location.href = document.location.origin + '/admin/dashboard'
+              })
+              .catch(error => {
+              });
+        } else {
+            setOpen(false)
+        }
       }
       const deleteGroup = () => {
-        let id = props.group.id
-        axios.delete('https://tisv-flood-control-api.herokuapp.com/groups/' + id, {
-        })
-          .then(response => {
-            window.location.href = document.location.origin + '/groups/admin'
-          })
-          .catch(error => {
-          });
+        let r = confirm("Deseja mesmo deletar este grupo?");
+        if(r==true){
+            let id = props.group.id
+            axios.delete('https://tisv-flood-control-api.herokuapp.com/groups/' + id, {
+            })
+              .then(response => {
+                window.location.href = document.location.origin + '/admin/dashboard'
+              })
+              .catch(error => {
+              });
+        } else {
+        setOpen(false)
+        }
       } 
     const handleClose = () => {
         
       setOpen(false);
     };
+    const activatedGroup = () =>{
+        let id = props.group.id
+        axios.put('https://tisv-flood-control-api.herokuapp.com/groups/'+ id, {
+            "active":true
+        })
+          .then(response => {
+            window.location.href = document.location.origin + '/admin/dashboard'
+          })
+          .catch(error => {
+          });
+    }
     const isAdmin = () =>{
         if (props.admin ==='true') {
             return(
-                <div className={classes.status}><span>{props.group.active? 'Ativo':'Pendente'}</span><button onClick={handleOpen}>gerenciar</button></div>
+                <div className={classes.status}>{props.group.active? <span>Ativo</span>: <button onClick={activatedGroup}>Ativar Grupo</button>}<button onClick={handleOpen}>gerenciar</button></div>
             )
         }
     }
