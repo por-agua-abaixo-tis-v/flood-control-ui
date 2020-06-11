@@ -24,7 +24,6 @@ const useStyles = makeStyles({
   },
   text:{
     margin: '10px',
-    fontFamily: "Nunito Sans",
     fontSize: '16px',
     fontWeight: '700',
     lineHeight: '24px',
