@@ -25,7 +25,13 @@ export default class CreateGroups extends Component {
       "range": range
     })
       .then(response => {
-        window.location.href = document.location.origin + '/groups'
+        this.props.notification({
+          title: "Grupo criado com sucesso",
+          msg: "Agora é só esperar a aprovação de um administrador!",
+          type: "success"
+        })
+        let name = document.getElementById('name').value
+        let range = document.getElementById('range').value
       })
       .catch(error => {
       });

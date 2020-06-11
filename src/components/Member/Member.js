@@ -4,13 +4,22 @@ import axios from '../../axios-orders'
 
 export default class Member extends Component {
     deleteUser = () => {
-        axios.delete('https://tisv-flood-control-api.herokuapp.com/users/'+this.props.member.id)
-        .then(response => {
-            this.setState({ members: response.data });
-        })
-        .catch(error => {
-            this.setState({ error: true });
-        });
+        // eslint-disable-next-line no-restricted-globals
+        let r = confirm("Deseja mesmo deletar este usuário?");
+        if(r == true){
+            axios.delete('https://tisv-flood-control-api.herokuapp.com/users/'+this.props.member.id)
+            .then(response => {
+                this.props.notification({
+                    title: "Usuário Excluido com sucesso!",
+                    type: "success",
+                  })
+                window.location.href = document.location.origin + '/groups'
+                this.setState({ members: response.data });
+            })
+            .catch(error => {
+                this.setState({ error: true });
+            });
+        }
     }
     render() {
         return (
@@ -23,7 +32,7 @@ export default class Member extends Component {
                         <div className={classes.descriptionUsers}>
                             {this.props.member.email}
                         </div>
-                        <button onClick={this.deleteUser}>
+                        <button disabled={localStorage.getItem('id') === this.props.member.id} onClick={this.deleteUser}>
                             Deletar Usuário
                         </button>
                     </div>

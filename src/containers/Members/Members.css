@@ -51,7 +51,7 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
-    color: #62C2EB;
+    color: #101220;
 }
 .activeMessage{
     display: flex;
@@ -79,7 +79,7 @@
     justify-content: flex-start;
 }
 .img{
-    border: 2px solid #62C2EB;
+    border: 2px solid #101220;
     padding: 2px;
     height: 40px;
     width: 40px;
@@ -91,5 +91,5 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
-    color: #62C2EB;
+    color: #101220;
 }

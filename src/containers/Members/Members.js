@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import classes from './Members.css'
 import axios from '../../axios-orders'
 import Member from '../../components/Member/Member'
+import user from '../../static/user.svg'
 class Chat extends Component {
 
     state = {
@@ -21,7 +22,7 @@ class Chat extends Component {
         let listOfMembers = []
         if (this.state.members.length > 0) {
             listOfMembers = this.state.members.map(member => {
-                return <Member member={member} />;
+                return <Member notification={this.props.notification} member={member} />;
             })
                 .reduce((arr, el) => {
                     return arr.concat(el)
@@ -38,7 +39,7 @@ class Chat extends Component {
             <div className={classes.chat}>
                 <div className={classes.title}>
                     <div className={classes.fs}>
-                        {<img className={classes.img}></img>}
+                        {<img src={user} className={classes.img}></img>}
                         <div>
                             <div className={classes.titleUsers}>
                                 Usuários Ativos

@@ -8,6 +8,10 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-ro
 import NotificationSystem from 'react-notification-system';
 import CreateGroups from './containers/CreateGroup/CreateGroup'
 import classes from './App.css'
+import { verifyLoggedAdmin } from "./commons/Helpers";
+import Notices from "./containers/Notices/Notices"
+import Inicio from "./containers/Inicio/Inicio.js"
+
 function App() {
   let notificationSystem = React.createRef();
   const addNotification = (config) => {
@@ -19,6 +23,7 @@ function App() {
       action: config.action
     });
   };
+  verifyLoggedAdmin()
   return (
     <Router>
       <div className={classes.chatcontainer}>
@@ -34,6 +39,9 @@ function App() {
           <Route path="/login">
               <Login notification={addNotification} ></Login>
           </Route>
+          <Route path="/notices">
+              <Notices notification={addNotification} ></Notices>
+          </Route>
           <Route path="/register">
             <Register notification={addNotification} ></Register>
           </Route>
@@ -41,7 +49,7 @@ function App() {
             <CreateGroups notification={addNotification} ></CreateGroups>
           </Route>
           <Route path="/">
-            {localStorage.getItem('id')? <Redirect to="/groups" />:<Redirect to="/login" />}
+            {localStorage.getItem('id') ? <Redirect to="/groups" />:<Inicio />}
           </Route>
         </Switch>
         </div>

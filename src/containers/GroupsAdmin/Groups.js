@@ -15,26 +15,14 @@ export default class Groups extends Component {
             selectedGroup: null
         }
     }
-    authUser = () => {
-        let name = document.getElementById('name').value
-        let latitude = this.marker.position.lat()
-        let longitude = this.marker.position.lng()
-        let range = document.getElementById('range').value
-        axios.post('https://tisv-flood-control-api.herokuapp.com/groups', {
-          "name": name,
-          "latitude": parseFloat(latitude),
-          "longitude": parseFloat(longitude),
-          "range": range
-        })
-          .then(response => {
-            window.location.href = document.location.origin + '/groups'
-          })
-          .catch(error => {
-          });
-      }
     componentDidMount() {
         if (localStorage.getItem('id') == null) {
+            localStorage.setItem('messageRedirect', 'true')
             window.location.href = window.location.origin + "/login"
+        }
+        if (localStorage.getItem('adm') === 'false') {
+            localStorage.setItem('messageRedirect', 'true')
+            window.location.href = window.location.origin + "/groups"
         }
         axios.get('https://tisv-flood-control-api.herokuapp.com/groups')
         .then(response => {
@@ -43,15 +31,6 @@ export default class Groups extends Component {
         .catch(error => {
             this.setState({ error: true });
         });
-        setInterval(() => {
-            axios.get('https://tisv-flood-control-api.herokuapp.com/groups')
-                .then(response => {
-                    this.setState({ groups: response.data });
-                })
-                .catch(error => {
-                    this.setState({ error: true });
-                });
-        }, 30000);
     }
     groupSelectEvent = (group) => {
         this.setState({ selectedGroup: group });
@@ -83,7 +62,7 @@ export default class Groups extends Component {
                         {this.groups()}
                     </div>
                     <div className={this.state.selectedGroup !== null ? 'flexGrow' : 'inactive chat-box'}>
-                        <Members back={this.deselectGroup} activeGroup={this.state.selectedGroup}></Members>
+                        <Members notification={this.props.notification} back={this.deselectGroup} activeGroup={this.state.selectedGroup}></Members>
                     </div>
                 </div>
             </Template>

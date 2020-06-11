@@ -54,13 +54,15 @@ export default class Groups extends Component {
         let listOfGroups = []
         if (this.state.groups.length > 0) {
             listOfGroups = this.state.groups.map(group => {
-                return <Group selectGroup={this.groupSelectEvent} group={group} />;
+                if (group.active) {
+                    return <Group selectGroup={this.groupSelectEvent} group={group} />;   
+                }
             })
                 .reduce((arr, el) => {
                     return arr.concat(el)
                 }, []);
         }
-        if (listOfGroups.length === 0) {
+        if (listOfGroups.length === 0 || listOfGroups[0] === undefined) {
             return (<div className='message'><img className='caneca' src={canecaFeliz}></img> <span>Parece que nenhum alerta foi encontrado, que bom!</span></div>)
         }
         return listOfGroups
@@ -69,6 +71,16 @@ export default class Groups extends Component {
         this.setState({ selectedGroup: null });
     }
     render() {
+        if (localStorage.getItem('messageRedirect') === 'true') {
+            setTimeout(() => {
+                this.props.notification({
+                  title: "Erro de Permissão",
+                  msg: "Você precisa estar logado como administrador para acessar está pagina",
+                  type: "error"
+                })
+              }, 1000);
+              localStorage.removeItem('messageRedirect')
+            }
         return (
             <Template>
                 <div className='chat'>

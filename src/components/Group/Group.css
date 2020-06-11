@@ -56,10 +56,11 @@
     justify-content: flex-start;
 }
 .img{
-    border: 2px solid #62C2EB;
+    border: 2px solid #101220;
     padding: 2px;
     height: 40px;
     width: 40px;
+    margin: 5px;
     border-radius: 10px;
 }
 .nameOfGroup{
@@ -67,14 +68,15 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
-    color: #62C2EB;
+    color: #101220;
+    min-width: 150px;
 }
 .nameOfGroupTitle{
     margin: 15px 30px 0px 30px;
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
-    color: #62C2EB;
+    color: #101220;
 }
 .inactive{
     display: none;
@@ -85,8 +87,8 @@
 }
 .status{
     display: flex;
-    justify-content: space-between;
-    width: 200px;
+    justify-content: flex-end;
+    width: 100%;
 }
 .map{
     height: 400px;
@@ -170,5 +172,43 @@
     padding: 0px;
     margin: 0px;
     line-height: 24px;
-    color: #62C2EB;
+    color: #101220;
+}
+.activegroup{
+    background-color: transparent; /* Green */
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+.ativargrupo{
+    background-color: #101220; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.gerenciargrupo{
+    background-color: orange; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }

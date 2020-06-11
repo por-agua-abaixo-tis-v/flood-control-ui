@@ -3,7 +3,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-color: #62C2EB;
+    background-color: #101220;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +17,7 @@
 }
 
 .Logo {
-    background-color: #C2E6F7;
+    background-color: #0E556E;
     height: 100%;
     width: 450px;
 }

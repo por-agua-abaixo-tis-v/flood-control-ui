@@ -1,5 +1,5 @@
 import React from 'react';
-import floodLogo from '../../static/logo.svg'
+import floodLogo from '../../static/inundar.svg'
 
 import classes from './Logo.css';
 

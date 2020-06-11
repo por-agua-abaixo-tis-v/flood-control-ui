@@ -45,8 +45,8 @@
     height: 50px;
     color: #101220;
     font-family: "Nunito Sans";
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 25px;
+    font-weight: bold;
     line-height: 24px;
 }
 .caneca{
@@ -71,11 +71,11 @@
     width: -webkit-fill-available;
     width: -moz-available;
 }
-.welcome{
-    max-width: 800px;
+.notices{
     display: flex;
     flex-direction: column;
+}
+.title{
     justify-content: center;
     align-items: center;
-    text-align: center;
 }

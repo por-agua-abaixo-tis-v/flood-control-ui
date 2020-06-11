@@ -105,7 +105,7 @@ export const Group = (props) => {
     const isAdmin = () =>{
         if (props.admin ==='true') {
             return(
-                <div className={classes.status}>{props.group.active? <span>Ativo</span>: <button onClick={activatedGroup}>Ativar Grupo</button>}<button onClick={handleOpen}>gerenciar</button></div>
+                <div className={classes.status}>{props.group.active? <button className={classes.activegroup} disabled>Ativo</button>: <button className={classes.ativargrupo} onClick={activatedGroup}>Ativar Grupo</button>}<button className={classes.gerenciargrupo} onClick={handleOpen}>gerenciar</button></div>
             )
         }
     }
