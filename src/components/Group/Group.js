@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import axios from '../../axios-orders'
+import { v4 as uuidv4 } from 'uuid';
 
 export const Group = (props) => {
     const [show, setShow] = useState(false);
@@ -61,7 +62,8 @@ export const Group = (props) => {
             let range = document.getElementById('range').value
             axios.put('https://tisv-flood-control-api.herokuapp.com/groups/'+ id, {
                 "name": name,
-                "range": range
+                "range": range,
+                "uuid": uuidv4()
             })
               .then(response => {
                 window.location.href = document.location.origin + '/admin/dashboard'
@@ -94,7 +96,8 @@ export const Group = (props) => {
     const activatedGroup = () =>{
         let id = props.group.id
         axios.put('https://tisv-flood-control-api.herokuapp.com/groups/'+ id, {
-            "active":true
+            "active":true,
+            "uuid": uuidv4()
         })
           .then(response => {
             window.location.href = document.location.origin + '/admin/dashboard'

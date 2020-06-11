@@ -6,6 +6,7 @@ import Chat from '../../containers/Chat/Chat';
 import './Groups.scss'
 import { getMapLocation } from '../../plugins/Geolocation'
 import canecaFeliz from '../../static/caneca.svg'
+import { v4 as uuidv4 } from 'uuid';
 export default class Groups extends Component {
     state = {
         groups: [],
@@ -17,7 +18,7 @@ export default class Groups extends Component {
         if (localStorage.getItem('id') == null) {
             window.location.href = window.location.origin + "/login"
         }
-        axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.longitude })
+        axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.longitude, 'uuid': uuidv4()})
             .then(response => {
                 axios.get('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/groups')
                     .then(response => {
@@ -32,7 +33,7 @@ export default class Groups extends Component {
             });
         setInterval(() => {
             let position = getMapLocation()
-            axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.latitude })
+            axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.latitude, 'uuid': uuidv4()})
                 .then(response => {
                     axios.get('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/groups')
                         .then(response => {

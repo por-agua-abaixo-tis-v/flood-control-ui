@@ -11,6 +11,7 @@ import axios from '../../axios-orders'
 import { render } from '@testing-library/react';
 import classes from './CreateGroup.css'
 import { getMapLocation } from '../../plugins/Geolocation'
+import { v4 as uuidv4 } from 'uuid';
 
 export default class CreateGroups extends Component {
   authUser = () => {
@@ -22,7 +23,8 @@ export default class CreateGroups extends Component {
       "name": name,
       "latitude": parseFloat(latitude),
       "longitude": parseFloat(longitude),
-      "range": range
+      "range": range,
+      'uuid': uuidv4()
     })
       .then(response => {
         this.props.notification({
