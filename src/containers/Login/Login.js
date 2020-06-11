@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,6 +39,7 @@ export default function Login(props) {
     axios.post('https://tisv-flood-control-api.herokuapp.com/users/auth', {
       "email": email,
       "pswd": password,
+      'uuid': uuidv4()
     })
       .then(response => {
         localStorage.setItem('id', response.data.user.id)
