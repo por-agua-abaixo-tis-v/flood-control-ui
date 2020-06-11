@@ -185,6 +185,7 @@
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    font-weight: bold;
 }
 .ativargrupo{
     background-color: #101220; /* Green */
@@ -197,14 +198,16 @@
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    font-weight: bold;
     cursor: pointer;
 }
 .gerenciargrupo{
-    background-color: orange; /* Green */
+    background-color: #005C7A; /* Green */
     border: none;
     border-radius: 5px;
     color: white;
     padding: 5px 5px;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
     display: inline-block;

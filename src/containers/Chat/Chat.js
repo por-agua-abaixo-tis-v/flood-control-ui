@@ -88,9 +88,10 @@ class Chat extends Component {
     }
     render() {
         this.groupId = this.props.activeGroup && this.props.activeGroup.id ? this.props.activeGroup.id : null
+        this.messageInterval()
         setTimeout(() => {
             this.messageInterval()
-        }, 10000);
+        }, 5000);
         return (
             <div className={classes.chat}>
                 <div className={this.props.activeGroup !== null ? classes.active : classes.inactive}>
@@ -106,7 +107,7 @@ class Chat extends Component {
                     {this.state.messages}
                 </div>
                 <div className={this.props.activeGroup !== null ? classes.active : classes.inactive}>
-                    <InputMessage groupId={this.groupId} user={localStorage.getItem('userName')}></InputMessage>
+                    <InputMessage groupId={this.groupId} attMessage={this.messageInterval}  user={localStorage.getItem('userName')}></InputMessage>
                 </div>
             </div>
         )

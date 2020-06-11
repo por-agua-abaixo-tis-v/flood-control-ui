@@ -10,6 +10,7 @@ const InputMessage = (props) => {
                 .then(response => {
                     document.getElementById('input-message').value = ''
                     this.messages = response.data;
+                    props.attMessage()
                 })
                 .catch(error => {
                 });
