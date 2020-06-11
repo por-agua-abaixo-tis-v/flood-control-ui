@@ -46,7 +46,7 @@ export default class Groups extends Component {
                 .catch(error => {
                     this.setState({ error: true });
                 });
-        }, 30000);
+        }, 10000);
     }
     groupSelectEvent = (group) => {
         this.setState({ selectedGroup: group });

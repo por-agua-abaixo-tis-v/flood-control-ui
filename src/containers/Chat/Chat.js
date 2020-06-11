@@ -75,7 +75,7 @@ class Chat extends Component {
         this.messageInterval()
         setTimeout(() => {
             this.messageInterval()
-        }, 5000);
+        }, 2000);
         return (
             <div className={classes.chat}>
                 <div className={this.props.activeGroup !== null ? classes.active : classes.inactive}>
