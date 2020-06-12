@@ -39,7 +39,7 @@ export default function Login(props) {
     axios.post('https://tisv-flood-control-api.herokuapp.com/users/auth', {
       "email": email,
       "pswd": password,
-      'uuid': uuidv4()
+      'request_id': uuidv4()
     })
       .then(response => {
         localStorage.setItem('id', response.data.user.id)

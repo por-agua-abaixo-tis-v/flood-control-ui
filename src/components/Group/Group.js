@@ -63,7 +63,7 @@ export const Group = (props) => {
             axios.put('https://tisv-flood-control-api.herokuapp.com/groups/'+ id, {
                 "name": name,
                 "range": range,
-                "uuid": uuidv4()
+                "request_id": uuidv4()
             })
               .then(response => {
                 window.location.href = document.location.origin + '/admin/dashboard'
@@ -97,7 +97,7 @@ export const Group = (props) => {
         let id = props.group.id
         axios.put('https://tisv-flood-control-api.herokuapp.com/groups/'+ id, {
             "active":true,
-            "uuid": uuidv4()
+            "request_id": uuidv4()
         })
           .then(response => {
             window.location.href = document.location.origin + '/admin/dashboard'

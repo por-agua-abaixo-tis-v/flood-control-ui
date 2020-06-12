@@ -24,7 +24,7 @@ export default class CreateGroups extends Component {
       "latitude": parseFloat(latitude),
       "longitude": parseFloat(longitude),
       "range": range,
-      'uuid': uuidv4()
+      'request_id': uuidv4()
     })
       .then(response => {
         this.props.notification({

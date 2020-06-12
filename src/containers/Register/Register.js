@@ -76,7 +76,7 @@ export default function Register(props) {
         "email": email,
         "name": name,
         "pswd": password,
-        'uuid': uuidv4()
+        'request_id': uuidv4()
       })
         .then(response => {
           localStorage.setItem('id', response.data.id);

@@ -18,7 +18,7 @@ export default class Groups extends Component {
         if (localStorage.getItem('id') == null) {
             window.location.href = window.location.origin + "/login"
         }
-        axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.longitude, 'uuid': uuidv4()})
+        axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.longitude, 'request_id': uuidv4()})
             .then(response => {
                 axios.get('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/groups')
                     .then(response => {
@@ -33,7 +33,7 @@ export default class Groups extends Component {
             });
         setInterval(() => {
             let position = getMapLocation()
-            axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.latitude, 'uuid': uuidv4()})
+            axios.post('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/geolocation', { 'latitude': position.latitude, 'longitude': position.latitude, 'request_id': uuidv4()})
                 .then(response => {
                     axios.get('https://tisv-flood-control-api.herokuapp.com/users/' + localStorage.getItem('id') + '/groups')
                         .then(response => {
@@ -46,7 +46,7 @@ export default class Groups extends Component {
                 .catch(error => {
                     this.setState({ error: true });
                 });
-        }, 10000);
+        }, 20000);
     }
     groupSelectEvent = (group) => {
         this.setState({ selectedGroup: group });
